@@ -7,10 +7,6 @@ async function run(): Promise<void> {
     const matched_key = core.getState('VIRTUALENV_CACHE_MATCHED_KEY')
     const cache_key = core.getState('VIRTUALENV_CACHE_KEY')
     const cache_path = core.getState('VIRTUALENV_DIRECTORY')
-    if (matched_key === cache_key) {
-      core.info('Cache hit occurred when restoring, not saving cache.') // eslint-disable-line i18n-text/no-en
-      return
-    }
     try {
       await cache.saveCache([cache_path], cache_key)
     } catch (error) {
